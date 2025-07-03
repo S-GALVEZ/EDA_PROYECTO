@@ -5,7 +5,7 @@
 package CLASES;
 
 /**
- * jasbfuiagfiuagfuia
+ * 
  * @author Sebastian
  */
 public class DatosInt {
