@@ -1,19 +1,15 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-
 package com.mycompany.proyecto_eda;
 
-import VISTA.MenuPrincipal;
+import VISTA.LoginPanel;
 
-/**
- *
- * @author Sebastian
- */
 public class PROYECTO_EDA {
 
     public static void main(String[] args) {
-        MenuPrincipal x = new MenuPrincipal();
-        x.setVisible(true);
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            new LoginPanel().setVisible(true); // Inicia primero con el login
+        });
     }
 }

@@ -8,11 +8,15 @@ package CLASES;
  *
  * @author Sebastian
  */
+import java.time.LocalDateTime; //Cambio para añadir finalizacion
+
 public class Expediente extends DatosInt{
     private String identificador;
     private int prioridad;
     private String asunto;
     private String documento;
+    private LocalDateTime fechaInicio;
+    private LocalDateTime fechaFin; //Cambio para añadir finalizacion
 
     public Expediente(String identificador, int prioridad, String asunto, String documento, String DNI, String nombre, String telefono, String email) {
         super(DNI, nombre, telefono, email);
@@ -20,6 +24,7 @@ public class Expediente extends DatosInt{
         this.prioridad = prioridad;
         this.asunto = asunto;
         this.documento = documento;
+        this.fechaInicio = LocalDateTime.now();
     }
 
     public String getIdentificador() {
@@ -53,7 +58,21 @@ public class Expediente extends DatosInt{
     public void setDocumento(String documento) {
         this.documento = documento;
     }
+    public void setFechaFin(LocalDateTime fechaFin) { //Cambio para añadir finalizacion
+    this.fechaFin = fechaFin;
+}
+
+    public boolean estaFinalizado() { //Cambio para añadir finalizacion
+        return fechaFin != null;
+    }
     
+    public LocalDateTime getFechaInicio() {
+    return fechaInicio;
+    }
+
+    public LocalDateTime getFechaFin() {
+    return fechaFin;
+    }
     
     
     

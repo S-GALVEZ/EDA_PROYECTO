@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class AgregarExpediente extends javax.swing.JFrame {
     private GestionExpediente gestionExp;
+    private String tipoInteresado;
 
     /**
      * Creates new form AgregarExpediente
@@ -24,6 +25,7 @@ public class AgregarExpediente extends javax.swing.JFrame {
     
     public AgregarExpediente(GestionExpediente gestionExp) {
         this.gestionExp = gestionExp;
+        this.tipoInteresado = tipoInteresado;
         initComponents();
     }
     
@@ -61,7 +63,7 @@ public class AgregarExpediente extends javax.swing.JFrame {
         tfEmail = new javax.swing.JTextField();
         btGuardar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Identificador");
 

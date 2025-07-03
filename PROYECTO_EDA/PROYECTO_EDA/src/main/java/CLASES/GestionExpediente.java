@@ -83,4 +83,16 @@ public class GestionExpediente {
             actual.setSiguiente(null);
         }
     }
+    public Expediente buscarPorID(String id) {
+    Nodo actual = this.primero; // Nuevo
+
+    while (actual != null) {
+        Expediente exp = (Expediente) actual.getElemento();
+        if (exp.getIdentificador().equalsIgnoreCase(id)) {
+            return exp;
+        }
+        actual = actual.getSiguiente();
+    }
+    return null; 
+}
 }
