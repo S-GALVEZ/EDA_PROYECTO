@@ -1,4 +1,4 @@
-/*
+*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -19,80 +19,46 @@ public class GestionExpediente {
         return primero;
     }
 
-    public void setPrimero(Nodo primero) {
-        this.primero = primero;
-    }
-    
-
-    public void AgregarPrimero(Nodo pNuevo) {
-        if (primero == null) //esta vacía
-        {
-            primero = pNuevo;
-        } else {
-            pNuevo.setSiguiente(primero);
-            primero = pNuevo;
-        }
-    }
-    
-    public void AgregarUltimo(Nodo pNuevo) {
-        if (primero == null) //esta vacía
-        {
-            primero = pNuevo;
-        } else {
-            Nodo actual = primero;
-            while (actual.getSiguiente() != null) {
-                actual = actual.getSiguiente();
-            }
-            actual.setSiguiente(pNuevo);
-        }
+    public boolean estaVacia() {
+        return primero == null;
     }
 
-    public void MostrarLista() {
-        if(primero ==null){
-            System.out.println(" -> ");
-        } else {
-            Nodo actual = primero;
-            while (actual != null) {
-                System.out.print(actual.getElemento() + " -> ");
-                actual = actual.getSiguiente();
-            }
-            System.out.println();
-        }
+    // Agrega al inicio (LIFO)
+    public void agregarComoPila(Expediente exp) {
+        Nodo nuevo = new Nodo(exp);
+        nuevo.setSiguiente(primero);
+        primero = nuevo;
     }
-    
-    public void EliminarPrimero(){
-        if (primero == null) {
-            primero = null;
-        }
-        else
-        {
-            primero = primero.getSiguiente();
-        }
+
+    // Elimina el expediente más reciente (el primero)
+    public Expediente eliminarUltimoAgregado() {
+        if (primero == null) return null;
+        Expediente eliminado = (Expediente) primero.getElemento();
+        primero = primero.getSiguiente();
+        return eliminado;
     }
-    
-    public void EliminarUltimo(){
-        if (primero == null || primero.getSiguiente()==null) {
-            primero = null;
-        }
-        else
-        {
-            Nodo actual = primero;
-            while (actual.getSiguiente().getSiguiente() != null) {
-                actual = actual.getSiguiente();
-            }
-            actual.setSiguiente(null);
-        }
-    }
+
+    // Buscar expediente por ID
     public Expediente buscarPorID(String id) {
-    Nodo actual = this.primero; // Nuevo
-
-    while (actual != null) {
-        Expediente exp = (Expediente) actual.getElemento();
-        if (exp.getIdentificador().equalsIgnoreCase(id)) {
-            return exp;
+        Nodo actual = primero;
+        while (actual != null) {
+            Expediente exp = (Expediente) actual.getElemento();
+            if (exp.getIdentificador().equalsIgnoreCase(id)) {
+                return exp;
+            }
+            actual = actual.getSiguiente();
         }
-        actual = actual.getSiguiente();
+        return null;
     }
-    return null; 
-}
+
+    // Contar cuántos expedientes hay
+    public int contarExpedientes() {
+        int contador = 0;
+        Nodo actual = primero;
+        while (actual != null) {
+            contador++;
+            actual = actual.getSiguiente();
+        }
+        return contador;
+    }
 }
