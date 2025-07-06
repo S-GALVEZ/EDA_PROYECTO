@@ -77,15 +77,6 @@ public class LoginPanel extends JFrame {
     private void verificarCredenciales() {
         String usuario = usuarioField.getText().trim();
         String clave = new String(claveField.getPassword());
-
-        /*if (usuario.equalsIgnoreCase("admin") && clave.equals("12345")) {
-            JOptionPane.showMessageDialog(this, "Bienvenido, administrador.");
-            this.dispose(); 
-            // Aquí abre tu ventana principal:
-            new MenuPrincipal().setVisible(true); 
-        } else {
-            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.", "Error", JOptionPane.ERROR_MESSAGE);
-        }*/
         if (usuario.equalsIgnoreCase("admin") && clave.equals("12345")) {
         this.dispose();
         new MenuPrincipal(gestionExp).setVisible(true); 
