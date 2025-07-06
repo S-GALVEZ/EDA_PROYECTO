@@ -4,6 +4,7 @@
  */
 package VISTA;
 
+import CLASES.GestionExpediente;
 import javax.swing.*;
 
 public class LoginPanel extends JFrame {
@@ -11,6 +12,8 @@ public class LoginPanel extends JFrame {
     private JTextField usuarioField;
     private JPasswordField claveField;
     private JButton botonIngresar;
+    private GestionExpediente gestionExp;
+
 
     public LoginPanel() {
         setTitle("Inicio de Sesión");
@@ -19,6 +22,16 @@ public class LoginPanel extends JFrame {
         setLocationRelativeTo(null);
         initComponents();
     }
+    
+    public LoginPanel(GestionExpediente gestionExp) {
+    this.gestionExp = gestionExp;
+    setTitle("Inicio de Sesión");
+    setSize(300, 250);
+    setDefaultCloseOperation(EXIT_ON_CLOSE);
+    setLocationRelativeTo(null);
+    initComponents();
+}
+
 
     private void initComponents() {
         JLabel usuarioLabel = new JLabel("Usuario:");
@@ -48,19 +61,35 @@ public class LoginPanel extends JFrame {
         panel.add(botonIngresar);
 
         add(panel);
+        
+        JButton botonRemitente = new JButton("Nuevo Expediente");
+        botonRemitente.setBounds(60, 160, 160, 25);
+        panel.add(botonRemitente);
+            
+        botonRemitente.addActionListener(e -> {
+        this.setVisible(true);
+        new Remitente(gestionExp, this).setVisible(true);
+        
+});
+
     }
 
     private void verificarCredenciales() {
         String usuario = usuarioField.getText().trim();
         String clave = new String(claveField.getPassword());
 
-        if (usuario.equalsIgnoreCase("admin") && clave.equals("12345")) {
+        /*if (usuario.equalsIgnoreCase("admin") && clave.equals("12345")) {
             JOptionPane.showMessageDialog(this, "Bienvenido, administrador.");
             this.dispose(); 
             // Aquí abre tu ventana principal:
             new MenuPrincipal().setVisible(true); 
         } else {
             JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        }*/
+        if (usuario.equalsIgnoreCase("admin") && clave.equals("12345")) {
+        this.dispose();
+        new MenuPrincipal(gestionExp).setVisible(true); 
+}
+
     }
 }
