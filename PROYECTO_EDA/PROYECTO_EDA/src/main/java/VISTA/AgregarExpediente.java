@@ -202,18 +202,6 @@ public class AgregarExpediente extends javax.swing.JFrame {
 
     private void btGuardarActionPerformed(java.awt.event.ActionEvent evt) {                                          
          // TODO add your handling code here:
-         /*Expediente EDA = new Expediente(
-                this.tfIdentificador.getText(),
-                 Integer.parseInt(this.tfPrioridad.getText()),
-                 this.tfAsunto.getText(),
-                 this.tfDocumento.getText(),
-                 this.tfDni.getText(),
-                 this.tfNombre.getText(),
-                 this.tfTelefono.getText(),
-                 this.tfEmail.getText());
-         gestionExp.AgregarUltimo(new Nodo(EDA));
-         JOptionPane.showMessageDialog(null, "El expediente fue guardado correctamente");
-         this.dispose();*/ 
            try {
         if (tfIdentificador.getText().isEmpty() || tfPrioridad.getText().isEmpty() ||
             tfAsunto.getText().isEmpty() || tfDocumento.getText().isEmpty() ||
