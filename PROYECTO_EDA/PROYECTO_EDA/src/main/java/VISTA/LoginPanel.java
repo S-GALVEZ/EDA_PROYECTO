@@ -84,3 +84,55 @@ public class LoginPanel extends JFrame {
 
     }
 }
+
+    private void initComponents() {
+        JLabel usuarioLabel = new JLabel("Usuario:");
+        JLabel claveLabel = new JLabel("Contraseña:");
+
+        usuarioField = new JTextField();
+        claveField = new JPasswordField();
+        botonIngresar = new JButton("Ingresar");
+
+        botonIngresar.addActionListener(e -> verificarCredenciales());
+
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+
+        usuarioLabel.setBounds(30, 30, 80, 25);
+        usuarioField.setBounds(120, 30, 130, 25);
+
+        claveLabel.setBounds(30, 70, 80, 25);
+        claveField.setBounds(120, 70, 130, 25);
+
+        botonIngresar.setBounds(90, 120, 100, 30);
+
+        panel.add(usuarioLabel);
+        panel.add(usuarioField);
+        panel.add(claveLabel);
+        panel.add(claveField);
+        panel.add(botonIngresar);
+
+        add(panel);
+        
+        JButton botonRemitente = new JButton("Nuevo Expediente");
+        botonRemitente.setBounds(60, 160, 160, 25);
+        panel.add(botonRemitente);
+            
+        botonRemitente.addActionListener(e -> {
+        this.setVisible(true);
+        new Remitente(gestionExp, this).setVisible(true);
+        
+});
+
+    }
+
+    private void verificarCredenciales() {
+        String usuario = usuarioField.getText().trim();
+        String clave = new String(claveField.getPassword());
+        if (usuario.equalsIgnoreCase("admin") && clave.equals("12345")) {
+        this.dispose();
+        new MenuPrincipal(gestionExp).setVisible(true); 
+}
+
+    }
+}
